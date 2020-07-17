@@ -1,0 +1,17 @@
+{
+  "name": "catmat-consumer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "allandeyvson",
+  "license": "MIT",
+  "dependencies": {
+    "xlsx": "^0.16.3"
+  },
+  "devDependencies": {
+    "mocha": "^8.0.1"
+  }
+}
