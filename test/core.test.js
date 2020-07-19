@@ -24,8 +24,8 @@ describe('Suite de testes da estrategia de leitura/conversao/persistencia de dad
 
     it('Testa a normalizacao dos dados presentes no campo `descricaoMaterial`', () =>{
         const robot = createNormalizeRobot(content)
-        //console.log(content.json)
-        robot.start()        
+        robot.start()
+        //console.log(content.jsonNormalized)
         assert.ok(content.jsonNormalized)
     });
 })

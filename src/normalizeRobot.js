@@ -1,22 +1,34 @@
 const normalize = require('normalize-text')
 
 function createNormalizeRobot(content = {}) {
-    
-    function start() {
-        //console.log(content.json)
-        content.json.map(
-            obj => {
-                console.log( 
-                    normalize
-                        .normalizeText(obj.descricaoMaterial)
-                        .toUpperCase()
-                        .replace('/', ' ')                        
-                        .split(' ')
-                )
-                return obj
-            }
-        )
 
+    function start() {
+        content.jsonNormalized = content.json.map(
+            obj => {
+                //var text = obj.descricaoMaterial
+                var text = removeCaracteres(obj.descricaoMaterial)
+                text = normalize.normalizeText(text).toUpperCase()
+                text = normalize.normalizeDiacritics(text).toUpperCase()                
+                console.log(text.match( /[^\,!\?]+[\,!\?]+/g ));
+                //console.log(text)
+                return {
+                    ...obj,
+                    tags: text.split(' ')
+                }
+            }
+        )       
+    }
+
+    function removeCaracteres(text) {
+        text = text.replace(new RegExp('[:]', 'gi'), ',');
+        /*text = text.replace(new RegExp('[/]', 'gi'), ' ');
+        text = text.replace(new RegExp('[:]', 'gi'), ' ');
+        text = text.replace(new RegExp('[;]', 'gi'), ' ');
+        text = text.replace(new RegExp('[!]', 'gi'), ' ');
+        text = text.replace(new RegExp('[\]', 'gi'), ' ');
+        text = text.replace(new RegExp('[-]', 'gi'), ' ');
+        */
+        return text.toUpperCase();
     }
 
     return {
