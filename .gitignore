@@ -116,4 +116,4 @@ dist
 .pnp.*
 
 #excluindo arquivos de configuracao
-config/*.env*
+*.env

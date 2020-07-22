@@ -4,12 +4,20 @@ const createJsonRobot = require('../src/jsonRobot');
 const createNormalizeRobot = require('../src/normalizeRobot');
 const createBdRobot = require('../src/bdRobot');
 const createConnection = require('../src/db/mongoDB');
+const materialSchema = require('../src/db/materialSchema')
 
 const contentMock = {
     archive : './test/planilha.xlsx'
 }
 
+var mongoConnection = {}
+
+
 describe('Suite de testes da estrategia de leitura/conversao/persistencia de dados', function(){
+
+    this.beforeAll(() => {
+        mongoConnection = createConnection(materialSchema)
+    })
 
     it('Testa leitura de dados', () =>{
         const robot = createSheetRobot(contentMock)
@@ -29,10 +37,15 @@ describe('Suite de testes da estrategia de leitura/conversao/persistencia de dad
         assert.ok(contentMock.jsonNormalized)        
     });
 
-    it.only('Testa conexão com a base de dados', async () =>{
-        const mongoConnection = createConnection(contentMock)
-        mongoConnection.init()
+    it('Testa conexão com a base de dados', async () =>{        
         const connected = await mongoConnection.isConnected()
         assert.equal(connected, 'Conectado')
     });
+
+    it('Testa persistencia na base de dados', async () =>{
+        const mock = contentMock.jsonNormalized[0]
+        const {_id} = await mongoConnection.create(mock)
+        assert.ok(_id)
+    });
+
 })

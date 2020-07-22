@@ -1,4 +1,6 @@
 const Mongoose = require('mongoose')
+require('dotenv').config()
+
 const STATUS = {
     0: 'Disconectado',
     1: 'Conectado',
@@ -7,11 +9,7 @@ const STATUS = {
 }
 
 function createConnection(schema={}){
-    const connection = {};
-
-    function init(){
-        this.connection = connect()
-    }
+    const connection = connect()
 
     function connect() {
         Mongoose.connect(process.env.MONGODB_URL, { 
@@ -27,20 +25,29 @@ function createConnection(schema={}){
         return connection
     }
 
-    async function isConnected() {
-        const state = STATUS[this.connection.readyState]
+    async function isConnected() {        
+        const state = STATUS[connection.readyState]
         if(state == 'Conectado') return state
 
         if(state !== 'Conectando') return state
 
         await new Promise(resolve => setTimeout(resolve, 1000))
         
-        return STATUS[this.connection.readyState]
+        return STATUS[connection.readyState]
+    }
+
+    async function create(item) {        
+        return schema.create(item)
+    }
+
+    async function read(item, skip = 0, limit = 0) {
+        return schema.find(item).skip(skip).limit(limit)
     }
 
     return{
-        init,
-        isConnected
+        isConnected,
+        create,
+        read
     }
 }
 
