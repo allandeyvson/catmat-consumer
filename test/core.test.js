@@ -18,7 +18,7 @@ describe('Suite de testes da estrategia de leitura/conversao/persistencia de dad
     this.timeout(Infinity)
 
     this.beforeAll(() => {
-        //mongoConnection = createConnection(materialSchema)
+        mongoConnection = createConnection(materialSchema)
     })
 
     it('Testa leitura de dados', () =>{
@@ -39,20 +39,26 @@ describe('Suite de testes da estrategia de leitura/conversao/persistencia de dad
         assert.ok(contentMock.jsonNormalized)        
     });
 
-    /*it('Testa conexão com a base de dados', async () =>{        
+    it('Testa conexão com a base de dados', async () =>{        
         const connected = await mongoConnection.isConnected()
         assert.equal(connected, 'Conectado')
     });
 
-    it('Testa persistencia na base de dados', async () =>{
+    it.skip('Testa persistencia na base de dados', async () =>{
         const mock = contentMock.jsonNormalized[0]
         const {_id} = await mongoConnection.create(mock)
         assert.ok(_id)
-    });*/
+    });
 
     it('Testa a persistencia dos dados normalizado', async () => {
-        const robot = createBdRobot(contentMock)
+        const robot = createBdRobot(contentMock, mongoConnection)
         await robot.start()
         assert.equal(contentMock.versionedData, true)
-    })
+    });
+
+    it('Testando busca por termos', async() => {
+        const search = ['TIPO']
+        const result = await mongoConnection.read(search)        
+        assert.ok(result.length > 0)
+    });
 })

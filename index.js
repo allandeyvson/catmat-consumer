@@ -4,8 +4,8 @@ const content = {
 }
 
 function main(){
-    const robot = core(content)
-    robot.start()
+    //const robot = core(content)
+    //robot.start()
 }
 
 main()
