@@ -3,6 +3,8 @@ const normalize = require('normalize-text')
 function createNormalizeRobot(content = {}) {
 
     function start() {
+        console.log('passo 03: normalizacao de json iniciada')
+
         content.jsonNormalized = content.json.map(
             obj => {                
                 var text = removeCaracteres(obj.descricaoMaterial)
@@ -13,7 +15,9 @@ function createNormalizeRobot(content = {}) {
                     tags: text.split(' ')
                 }
             }
-        )       
+        )
+
+        console.log('passo 03: normalizacao de json concluida')
     }
 
     function removeCaracteres(text) {

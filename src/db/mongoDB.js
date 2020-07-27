@@ -14,7 +14,8 @@ function createConnection(schema={}){
     function connect() {
         Mongoose.connect(process.env.MONGODB_URL, { 
             useNewUrlParser: true , 
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            serverSelectionTimeoutMS: 60000
         }, function (error) {
             if (!error) return
             console.error('Falha na conexão', error)
@@ -44,10 +45,15 @@ function createConnection(schema={}){
         return schema.find(item).skip(skip).limit(limit)
     }
 
+    async function insertMany(itens){
+        return await schema.insertMany(itens, { ordered: false, limit: 10, rawResult: true, lean:true})
+    }
+
     return{
         isConnected,
         create,
-        read
+        read,
+        insertMany
     }
 }
 

@@ -3,7 +3,9 @@ const XLSX = require('xlsx');
 function createJsonRobot(content = {}) {
 
     function start() {
+        console.log('passo 02: conversao de planilha em json iniciada')
         convert();
+        console.log('passo 02: conversao de planilha em json concluida')
     }
 
     return {

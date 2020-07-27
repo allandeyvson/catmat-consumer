@@ -3,7 +3,9 @@ const XLSX = require('xlsx');
 function createSheetRobot(content = {}) {
     
     function start() {
-        content.workBook = XLSX.readFile(content.archive);        
+        console.log('passo 01: leitura de planilha iniciada')
+        content.workBook = XLSX.readFile(content.archive);
+        console.log('passo 01: leitura de planilha concluido')
     }
 
     return {
