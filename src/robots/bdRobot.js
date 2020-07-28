@@ -1,5 +1,5 @@
-const createConnection = require('./db/mongoDB');
-const materialSchema = require('./db/materialSchema')
+const createConnection = require('../db/mongoDB');
+const materialSchema = require('../db/materialSchema')
 
 function createBdRobot(content = {}, db = createConnection(materialSchema)) {
 
