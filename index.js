@@ -5,7 +5,7 @@ const content = {
 
 function main(){
     //const robot = core(content)
-    //robot.start()
+    //await robot.start()
 }
 
 main()

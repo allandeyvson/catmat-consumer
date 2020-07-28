@@ -5,7 +5,7 @@ const createBdRobot = require('./bdRobot');
 
 function create(content) {
 
-    function start() {
+    async function start() {
         console.log('iniciando processamento')
 
         const sheet = createSheetRobot(content)
@@ -18,7 +18,7 @@ function create(content) {
         normalized.start()
 
         const bd = createBdRobot(content)
-        bd.start()
+        await bd.start()
 
 
         console.log('finalizando processamento')
