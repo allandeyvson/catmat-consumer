@@ -1,8 +1,8 @@
 const assert = require('assert');
-const createSheetRobot = require('../src/sheetRobot');
-const createJsonRobot = require('../src/jsonRobot');
-const createNormalizeRobot = require('../src/normalizeRobot');
-const createBdRobot = require('../src/bdRobot');
+const createSheetRobot = require('../src/robots/sheetRobot');
+const createJsonRobot = require('../src/robots/jsonRobot');
+const createNormalizeRobot = require('../src/robots/normalizeRobot');
+const createBdRobot = require('../src/robots/bdRobot');
 const createConnection = require('../src/db/mongoDB');
 const materialSchema = require('../src/db/materialSchema')
 

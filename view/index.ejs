@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <center>
+        <h1> Busque no Catálogo de Materiais </h1>
+        <form action="/search" method="get">
+            <input type="text" name="query" />
+            <input type="submit" value="Search" />
+        </form>
+    </center>
+
+    <%
+            if(results){
+                if(list.length > 0){
+        %>
+        <center>            
+            <b>Resultados da pesquisa por <%= search.toUpperCase() %>:</b>
+        </center>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th colspan="2">Grupo Material</th>	
+                    <th colspan="2">Classe Material</th>
+                    <th colspan="2">Padrão Desc Material</th>
+                    <th colspan="2">Codigo Material</th>
+                    <th>Ind Item Sustentavel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% list.forEach(function(item){ %>
+                    <tr>
+                        <td><%= item.codigoGrupoMaterial %></td><td><%= item.descricaoGrupoMaterial%></td>
+                        <td><%= item.codigoClasseMaterial %></td> <td><%= item.descricaoClasseMaterial%></td>
+                        <td><%= item.codigoPadraoDescMaterial %></td> <td><%= item.descricaoPadraoDescMaterial%></td>
+                        <td><%= item.codigoMaterial %></td> <td><%= item.descricaoMaterial%></td>
+                        <td><%= item.indItemSustentavel %></td>                                              
+                    </tr>
+                <% }); %>                
+            </tbody>
+        </table>    
+        <% } else{ %>
+            <center>
+                <b>Nenhum resultado encontrado para <%= search.toUpperCase() %>!</b>
+            </center>
+        <% 
+            }
+        }
+        %>
+</body>
+
+</html>

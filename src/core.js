@@ -1,7 +1,7 @@
-const createSheetRobot = require('./sheetRobot');
-const createJsonRobot = require('./jsonRobot');
-const createNormalizeRobot = require('./normalizeRobot');
-const createBdRobot = require('./bdRobot');
+const createSheetRobot = require('./robots/sheetRobot');
+const createJsonRobot = require('./robots/jsonRobot');
+const createNormalizeRobot = require('./robots/normalizeRobot');
+const createBdRobot = require('./robots/bdRobot');
 
 function create(content) {
 
