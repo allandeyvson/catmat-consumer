@@ -1,6 +1,6 @@
 # catmat-consumer
 
-Search Engine to federal government material/service catalog.
+Search Engine to federal government material/service catalog (acess in https://busca-catmat.herokuapp.com/)
 
 initial commands to database
 ```

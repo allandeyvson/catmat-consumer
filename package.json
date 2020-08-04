@@ -1,7 +1,7 @@
 {
   "name": "catmat-consumer",
   "version": "1.0.0",
-  "description": "",
+  "description": "Search Engine to federal government material/service catalog (acess in https://busca-catmat.herokuapp.com/)",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
@@ -19,5 +19,16 @@
   },
   "devDependencies": {
     "mocha": "^8.0.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allandeyvson/catmat-consumer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/allandeyvson/catmat-consumer/issues"
+  },
+  "homepage": "https://github.com/allandeyvson/catmat-consumer#readme"
 }
