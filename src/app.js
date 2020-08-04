@@ -22,8 +22,8 @@ function app() {
             res.render("../view/index", {results : true, search : req.query.query, list: result});
         });
 
-        app.listen(9000, function () {
-            console.log("running server in port 9000");
+        app.listen(process.env.PORT, function () {
+            console.log("running server in port " , process.env.PORT);
         });
     }
 
