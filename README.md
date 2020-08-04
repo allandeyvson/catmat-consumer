@@ -1,9 +1,8 @@
 # catmat-consumer
 
-projeto para consumir os dados do catalogo de materiais disponibilizados pelo governo federal
+Search Engine to federal government material/service catalog.
 
-
-Comandos para iniciar o banco de dados
+initial commands to database
 ```
 docker exec -it mongodb \
     mongo --host localhost -u admin -p minhasenhaadmin --authenticationDatabase admin \
@@ -12,4 +11,12 @@ docker exec -it mongodb \
 
 ```
 docker exec -it CONTAINER_ID mongo -u dev -p minhasenhadev --authenticationDatabase catmat 
+```
+
+Archive format .env
+
+File: `.env.dev`
+
+```
+MONGODB_URL=
 ```
