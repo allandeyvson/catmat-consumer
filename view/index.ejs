@@ -3,14 +3,25 @@
 <head>
     <script data-ad-client="ca-pub-5735566459843916" async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
 </head>
 
 <body>
-    <center>
-        <h1> Busque no Catálogo de Materiais/Serviços </h1>
-        <form action="/search" method="get">
-            <input type="text" name="query" />
-            <input type="submit" value="Search" />
+    <center>        
+        <h1> Busque no Catálogo de Materiais/Serviços </h1>        
+
+        <form action="/search" method="get">            
+
+            <div class="input-group mb-3">
+                <input type="text" name="query" class="form-control" placeholder="Pesquise seu material ou serviço"
+                    aria-label="Pesquise seu material ou serviço" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
+                </div>
+            </div>
         </form>
     </center>
 
@@ -46,7 +57,7 @@
         </table>    
         <% } else{ %>
             <center>
-                <b>Nenhum resultado encontrado para <%= search.toUpperCase() %>!</b>
+                <h3>Nenhum resultado encontrado!</h3>
             </center>
         <% 
             }
