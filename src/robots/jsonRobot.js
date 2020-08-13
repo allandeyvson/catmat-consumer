@@ -1,5 +1,8 @@
 const XLSX = require('xlsx');
 
+const material = require('./../types/material')
+const service = require('./../types/service')
+
 function createJsonRobot(content = {}) {
 
     function start() {
@@ -14,7 +17,12 @@ function createJsonRobot(content = {}) {
     }
 
     function convert() {
-        var sheetCatMatName = content.workBook.SheetNames[0];
+        convertForType(content, material);
+        convertForType(content, service);
+    }
+
+    function convertForType(content, type) {
+        var sheetCatMatName = content.workBook.SheetNames[type.aba()];
         var workSheetCatMat = content.workBook.Sheets[sheetCatMatName];
         var jsonCatMat = XLSX.utils.sheet_to_json(workSheetCatMat);
 
@@ -25,22 +33,12 @@ function createJsonRobot(content = {}) {
             }
         });
 
-        content.json = json.map(
-            element => {
-                return {
-                    'codigoGrupoMaterial' : element.__EMPTY,
-                    'descricaoGrupoMaterial' : element.__EMPTY_1,
-                    'codigoClasseMaterial' : element.__EMPTY_2,
-                    'descricaoClasseMaterial' : element.__EMPTY_3,
-                    'codigoPadraoDescMaterial' : element.__EMPTY_4,
-                    'descricaoPadraoDescMaterial' : element.__EMPTY_5,
-                    'codigoMaterial' : element.__EMPTY_6,
-                    'descricaoMaterial' : element.__EMPTY_7, 
-                    'situacaoMaterial' : element.__EMPTY_8, 
-                    'indItemSustentavel': element.__EMPTY_9
-                }
-            }
-        )
-    }
+        jsonSheet = type.jsonForType(json)
+        
+        content.json = [
+            ...
+            jsonSheet
+        ]
+    }    
 }
 module.exports = createJsonRobot

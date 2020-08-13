@@ -13,13 +13,13 @@ const contentMock = {
 var mongoConnection = {}
 
 
-describe.skip('Suite de testes da estrategia de leitura/conversao/persistencia de dados', function(){
+describe('Suite de testes da estrategia de leitura/conversao/persistencia de dados', function(){
 
     this.timeout(Infinity)
 
-    this.beforeAll(() => {
+    /*this.beforeAll(() => {
         mongoConnection = createConnection(materialSchema)
-    })
+    })*/
 
     it('Testa leitura de dados', () =>{
         const robot = createSheetRobot(contentMock)
@@ -30,7 +30,9 @@ describe.skip('Suite de testes da estrategia de leitura/conversao/persistencia d
     it('Testa conversao de xlss para json', () =>{
         const robot = createJsonRobot(contentMock)
         robot.start()
+        console.log(contentMock.json)
         assert.ok(contentMock.json)
+        assert.ok(contentMock.json.length > 0)
     });
 
     it('Testa a normalizacao dos dados presentes no campo `descricaoMaterial`', () =>{
@@ -39,7 +41,7 @@ describe.skip('Suite de testes da estrategia de leitura/conversao/persistencia d
         assert.ok(contentMock.jsonNormalized)        
     });
 
-    it('Testa conexão com a base de dados', async () =>{        
+    it.skip('Testa conexão com a base de dados', async () =>{        
         const connected = await mongoConnection.isConnected()
         assert.equal(connected, 'Conectado')
     });
@@ -50,13 +52,13 @@ describe.skip('Suite de testes da estrategia de leitura/conversao/persistencia d
         assert.ok(_id)
     });
 
-    it('Testa a persistencia dos dados normalizado', async () => {
+    it.skip('Testa a persistencia dos dados normalizado', async () => {
         const robot = createBdRobot(contentMock, mongoConnection)
         await robot.start()
         assert.equal(contentMock.versionedData, true)
     });
 
-    it('Testando busca por termos', async() => {
+    it.skip('Testando busca por termos', async() => {
         const search = ['TIPO']
         const result = await mongoConnection.read(search)        
         assert.ok(result.length > 0)

@@ -1,6 +1,10 @@
 const Mongoose = require('mongoose')
 
 const MaterialSchema = new Mongoose.Schema({
+    tipoMaterial:{
+        type: String,
+        required: true  
+    },
     codigoGrupoMaterial:{
         type: String,
         required: true
