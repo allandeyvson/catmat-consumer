@@ -17,9 +17,9 @@ describe('Suite de testes da estrategia de leitura/conversao/persistencia de dad
 
     this.timeout(Infinity)
 
-    /*this.beforeAll(() => {
+    this.beforeAll(() => {
         mongoConnection = createConnection(materialSchema)
-    })*/
+    })
 
     it('Testa leitura de dados', () =>{
         const robot = createSheetRobot(contentMock)
@@ -30,7 +30,6 @@ describe('Suite de testes da estrategia de leitura/conversao/persistencia de dad
     it('Testa conversao de xlss para json', () =>{
         const robot = createJsonRobot(contentMock)
         robot.start()
-        console.log(contentMock.json)
         assert.ok(contentMock.json)
         assert.ok(contentMock.json.length > 0)
     });
@@ -41,7 +40,7 @@ describe('Suite de testes da estrategia de leitura/conversao/persistencia de dad
         assert.ok(contentMock.jsonNormalized)        
     });
 
-    it.skip('Testa conexão com a base de dados', async () =>{        
+    it('Testa conexão com a base de dados', async () =>{        
         const connected = await mongoConnection.isConnected()
         assert.equal(connected, 'Conectado')
     });
@@ -52,13 +51,13 @@ describe('Suite de testes da estrategia de leitura/conversao/persistencia de dad
         assert.ok(_id)
     });
 
-    it.skip('Testa a persistencia dos dados normalizado', async () => {
+    it('Testa a persistencia dos dados normalizado', async () => {
         const robot = createBdRobot(contentMock, mongoConnection)
         await robot.start()
         assert.equal(contentMock.versionedData, true)
     });
 
-    it.skip('Testando busca por termos', async() => {
+    it('Testando busca por termos', async() => {
         const search = ['TIPO']
         const result = await mongoConnection.read(search)        
         assert.ok(result.length > 0)

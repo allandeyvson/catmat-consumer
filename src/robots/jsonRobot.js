@@ -17,6 +17,7 @@ function createJsonRobot(content = {}) {
     }
 
     function convert() {
+        content.json = []
         convertForType(content, material);
         convertForType(content, service);
     }
@@ -34,11 +35,7 @@ function createJsonRobot(content = {}) {
         });
 
         jsonSheet = type.jsonForType(json)
-        
-        content.json = [
-            ...
-            jsonSheet
-        ]
+        content.json = content.json.concat(jsonSheet)
     }    
 }
 module.exports = createJsonRobot

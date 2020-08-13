@@ -13,11 +13,11 @@ class ServiceType {
                     'descricaoGrupoMaterial': element.__EMPTY_1,
                     'codigoClasseMaterial': element.__EMPTY_2,
                     'descricaoClasseMaterial': element.__EMPTY_3,
-                    'codigoPadraoDescMaterial': '',
-                    'descricaoPadraoDescMaterial': '',
+                    'codigoPadraoDescMaterial': '-',
+                    'descricaoPadraoDescMaterial': '-',
                     'codigoMaterial': element.__EMPTY_4,
                     'descricaoMaterial': element.__EMPTY_5,                    
-                    'indItemSustentavel': '',
+                    'indItemSustentavel': '-',
                     'situacaoMaterial': element.__EMPTY_6
                 };
             }
