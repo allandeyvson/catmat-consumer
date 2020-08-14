@@ -5,8 +5,6 @@ const content = {
 }
 
 async function main(){
-    const robot = core(content)
-    await robot.start()
 
     const webSearch = app()
     webSearch.start()
