@@ -17,9 +17,17 @@ function app() {
         });
 
         app.get('/search', async function (req, res) {
-            var searchParams = req.query.query.toUpperCase().split(' ')
-            var result = await mongoDB.read(searchParams)
-            res.render("../view/index", {results : true, search : req.query.query, list: result});
+            if (req.query.query !== undefined){
+                var searchParams = req.query.query.toUpperCase().split(' ')
+                
+                var radioType = req.query.radioType
+    
+                var result = await mongoDB.read(searchParams, radioType)    
+    
+                res.render("../view/index", {results : true, search : req.query.query, list: result});    
+            } else {
+                res.render("../view/index", {results : false});
+            }
         });
 
         app.listen(process.env.PORT, function () {

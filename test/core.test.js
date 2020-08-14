@@ -31,6 +31,7 @@ describe.skip('Suite de testes da estrategia de leitura/conversao/persistencia d
         const robot = createJsonRobot(contentMock)
         robot.start()
         assert.ok(contentMock.json)
+        assert.ok(contentMock.json.length > 0)
     });
 
     it('Testa a normalizacao dos dados presentes no campo `descricaoMaterial`', () =>{
