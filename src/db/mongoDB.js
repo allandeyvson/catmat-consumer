@@ -41,9 +41,9 @@ function createConnection(schema={}){
         return schema.create(item)
     }
 
-    async function read(itens, skip = 0, limit = 0) {
+    async function read(itens, type, skip = 0, limit = 0) {
         //return schema.find(item).skip(skip).limit(limit)
-        return await schema.find({tags: {$all: itens}})
+        return await schema.find({tags: {$all: itens}, tipoMaterial: type})
     }
 
     async function insertMany(itens){
