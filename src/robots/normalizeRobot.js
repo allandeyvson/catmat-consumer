@@ -1,4 +1,4 @@
-const normalize = require('normalize-text')
+const util = require('../utils/stringUtil')
 
 function createNormalizeRobot(content = {}) {
 
@@ -7,9 +7,7 @@ function createNormalizeRobot(content = {}) {
 
         content.jsonNormalized = content.json.map(
             obj => {                
-                var text = removeCaracteres(obj.descricaoMaterial)
-                text = normalize.normalizeText(text).toUpperCase()
-                text = normalize.normalizeDiacritics(text).toUpperCase()                
+                var text = util.normalizeText(obj.descricaoMaterial)                               
                 return {
                     ...obj,
                     tags: text.split(' ')
@@ -18,17 +16,7 @@ function createNormalizeRobot(content = {}) {
         )
 
         console.log('passo 03: normalizacao de json concluida')
-    }
-
-    function removeCaracteres(text) {
-        text = text.replace(new RegExp('[/]', 'gi'), '');
-        text = text.replace(new RegExp('[:]', 'gi'), ' ');
-        text = text.replace(new RegExp('[;]', 'gi'), ' ');
-        text = text.replace(new RegExp('[!]', 'gi'), ' ');
-        text = text.replace(new RegExp('[\]', 'gi'), ' ');
-        text = text.replace(new RegExp('[-]', 'gi'), ' ');        
-        return text.toUpperCase();
-    }
+    }    
 
     return {
         start
