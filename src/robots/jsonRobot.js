@@ -1,7 +1,7 @@
 const XLSX = require('xlsx');
-
 const material = require('./../types/material')
 const service = require('./../types/service')
+const fs = require('fs')
 
 function createJsonRobot(content = {}) {
 
@@ -29,7 +29,10 @@ function createJsonRobot(content = {}) {
 
         var json = jsonCatMat.filter(element => {
             var index = jsonCatMat.indexOf(element);
-            if (index > 4) {
+
+            if (index === 1){
+                fs.writeFileSync('data.json', JSON.stringify(element))
+            } else if (index > 4) {
                 return element;
             }
         });

@@ -48,10 +48,11 @@
         <center>            
             <b>Resultados da pesquisa por <%= search.toUpperCase() %>:</b>
         </center>
-
+        <br>
         <table border="1">
             <thead>
                 <tr>
+                    <th>Tipo</th>	
                     <th colspan="2">Grupo Material/Serviço</th>	
                     <th colspan="2">Classe Material/Serviço</th>
                     <th colspan="2">Padrão Desc Material/Serviço</th>
@@ -62,6 +63,7 @@
             <tbody>
                 <% list.forEach(function(item){ %>
                     <tr>
+                        <td><%= item.tipoMaterial %></td>
                         <td><%= item.codigoGrupoMaterial %></td><td><%= item.descricaoGrupoMaterial%></td>
                         <td><%= item.codigoClasseMaterial %></td> <td><%= item.descricaoClasseMaterial%></td>
                         <td><%= item.codigoPadraoDescMaterial %></td> <td><%= item.descricaoPadraoDescMaterial%></td>
@@ -73,6 +75,9 @@
         </table>    
         <% } else{ %>
             <center>
+                <br>
+                <br>
+                <br>
                 <h3>Nenhum resultado encontrado!</h3>
             </center>
         <% 
@@ -81,4 +86,14 @@
         %>
 </body>
 
+<footer>
+    <br>
+    <br>
+    <br>
+    <div>
+        <h6>
+            <center><%= rodape %></center>
+        </h6>
+    </div>
+</footer>
 </html>

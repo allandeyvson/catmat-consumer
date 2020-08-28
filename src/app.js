@@ -3,6 +3,7 @@ const db = require('./db/mongoDB')
 const schema = require('./db/materialSchema');
 const { mongo } = require('mongoose');
 const util = require('./utils/stringUtil')
+const dataJson = require('../data/data.json')
 
 
 function app() {
@@ -14,7 +15,7 @@ function app() {
         app.set('view engine', 'ejs');
 
         app.get('/', function (req, res) {
-            res.render("../view/index", {results : false, radioType : 'Material'});
+            res.render("../view/index", {results : false, radioType : 'Material', rodape : dataJson["LISTAGEM CATSER"]});
         });
 
         app.get('/search', async function (req, res) {
@@ -29,9 +30,9 @@ function app() {
                 else 
                     result = await mongoDB.read(searchParams.split(' '), radioType)
     
-                res.render("../view/index", {results : true, search : req.query.query, list: result, radioType:radioType});    
+                res.render("../view/index", {results : true, radioType:radioType, rodape : dataJson["LISTAGEM CATSER"], search : req.query.query, list: result});    
             } else {
-                res.render("../view/index", {results : false, radioType : 'Material'});
+                res.render("../view/index", {results : false, radioType : 'Material' , rodape : dataJson["LISTAGEM CATSER"]});
             }
         });
 
