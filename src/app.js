@@ -2,6 +2,7 @@ const express = require('express');
 const db = require('./db/mongoDB')
 const schema = require('./db/materialSchema');
 const { mongo } = require('mongoose');
+const util = require('./utils/stringUtil')
 
 
 function app() {
@@ -18,11 +19,11 @@ function app() {
 
         app.get('/search', async function (req, res) {
             if (req.query.query !== undefined){
-                var searchParams = req.query.query.toUpperCase().split(' ')
-                
+                var searchParams = util.normalizeText(req.query.query)
+                                
                 var radioType = req.query.radioType
     
-                var result = await mongoDB.read(searchParams, radioType)    
+                var result = await mongoDB.read(searchParams.split(' '), radioType)    
     
                 res.render("../view/index", {results : true, search : req.query.query, list: result});    
             } else {
