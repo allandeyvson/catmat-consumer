@@ -24,13 +24,13 @@
             </div>
         
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInline1" name="radioType" value="Material" checked>
+                <input type="radio" class="custom-control-input" id="defaultInline1" name="radioType" value="Material" 
+                    <%= radioType == 'Material'  ? 'checked' : '' %> >
                 <label class="custom-control-label" for="defaultInline1">Material</label>
-            </div>
-            
-            <!-- Default inline 2-->
+            </div>            
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInline2" name="radioType" value="Servico">
+                <input type="radio" class="custom-control-input" id="defaultInline2" name="radioType" value="Servico"
+                    <%= radioType == 'Servico'  ? 'checked' : '' %> >
                 <label class="custom-control-label" for="defaultInline2">Serviço</label>
             </div>
         </form>
