@@ -46,6 +46,10 @@ function createConnection(schema={}){
         return await schema.find({tags: {$all: itens}, tipoMaterial: type})
     }
 
+    async function readForCode(code) {
+        return await schema.find({codigoMaterial: code})
+    }
+
     async function insertMany(itens){
         return await schema.insertMany(itens, { ordered: false, limit: 10, rawResult: true, lean:true})
     }
@@ -54,7 +58,8 @@ function createConnection(schema={}){
         isConnected,
         create,
         read,
-        insertMany
+        insertMany,
+        readForCode
     }
 }
 

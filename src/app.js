@@ -23,7 +23,11 @@ function app() {
 
                 var radioType = req.query.radioType
     
-                var result = await mongoDB.read(searchParams.split(' '), radioType)    
+                var result = {}
+                if (radioType === 'Codigo')
+                    result = await mongoDB.readForCode(searchParams)
+                else 
+                    result = await mongoDB.read(searchParams.split(' '), radioType)
     
                 res.render("../view/index", {results : true, search : req.query.query, list: result, radioType:radioType});    
             } else {
