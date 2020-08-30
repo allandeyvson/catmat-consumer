@@ -56,12 +56,17 @@ function createConnection(schema={}){
         return await schema.insertMany(itens, { ordered: false, limit: 10, rawResult: true, lean:true})
     }
 
+    async function removeAll() {        
+        return schema.remove({})
+    }    
+
     return{
         isConnected,
         create,
         read,
         insertMany,
-        readForCode
+        readForCode,
+        removeAll
     }
 }
 

@@ -5,6 +5,10 @@ const { mongo } = require('mongoose');
 const util = require('./utils/stringUtil')
 const dataJson = require('../data/data.json')
 
+const content = {
+    archive : './data/planilha_producao.xlsx'
+}
+const create = require('./core')
 
 function app() {
 
@@ -35,6 +39,17 @@ function app() {
                 res.render("../view/index", {results : false, radioType : 'Material' , rodape : dataJson["LISTAGEM CATSER"]});
             }
         });
+
+        app.get('/updateData', async function (req, res) {
+            if (req.query.hash !== undefined && req.query.hash === process.env.HASH) {
+                await mongoDB.removeAll()
+                const robot = create(content)
+                await robot.start()
+                res.send('Operacao concluida com sucesso.')
+            } else {
+                res.send('Você não esta autorizado a executar essa operação.')
+            }
+        })
 
         app.listen(process.env.PORT, function () {
             console.log("running server in port " , process.env.PORT);
