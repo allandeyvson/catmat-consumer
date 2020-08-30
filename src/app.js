@@ -44,7 +44,7 @@ function app() {
             if (req.query.hash !== undefined && req.query.hash === process.env.HASH) {
                 await mongoDB.removeAll()
                 const robot = create(content)
-                await robot.start()
+                robot.start()
                 res.send('Operacao concluida com sucesso.')
             } else {
                 res.send('Você não esta autorizado a executar essa operação.')
