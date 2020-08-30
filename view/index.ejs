@@ -11,32 +11,34 @@
 
 <body>
     <center>        
-        <h1> Busque no Catálogo de Materiais/Serviços </h1>        
+        <h1 class="text-primary"> Busque no CATMAT/CATSER </h1>        
 
         <form action="/search" method="get">            
-
-            <div class="input-group mb-3">
-                <input type="text" name="query" class="form-control" placeholder="Pesquise seu material ou serviço"
+            
+            <div class="container">                
+                <div class="input-group mb-3">
+                    <input type="text" name="query" class="form-control" placeholder="Pesquise seu material ou serviço"
                     aria-label="Pesquise seu material ou serviço" aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
+                    </div>
                 </div>
-            </div>
-        
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInline1" name="radioType" value="Material" 
+                
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline1" name="radioType" value="Material" 
                     <%= radioType == 'Material'  ? 'checked' : '' %> >
-                <label class="custom-control-label" for="defaultInline1">Material</label>
-            </div>            
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInline2" name="radioType" value="Servico"
+                    <label class="custom-control-label" for="defaultInline1">Material</label>
+                </div>            
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline2" name="radioType" value="Servico"
                     <%= radioType == 'Servico'  ? 'checked' : '' %> >
-                <label class="custom-control-label" for="defaultInline2">Serviço</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" class="custom-control-input" id="defaultInline3" name="radioType" value="Codigo"
+                    <label class="custom-control-label" for="defaultInline2">Serviço</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline3" name="radioType" value="Codigo"
                     <%= radioType == 'Codigo'  ? 'checked' : '' %> >
-                <label class="custom-control-label" for="defaultInline3">Código</label>
+                    <label class="custom-control-label" for="defaultInline3">Código</label>
+                </div>
             </div>
         </form>
     </center>
@@ -91,7 +93,7 @@
     <br>
     <br>
     <div>
-        <h6>
+        <h6 class="text-muted">
             <center><%= rodape %></center>
         </h6>
     </div>
